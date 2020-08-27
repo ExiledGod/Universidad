@@ -1,0 +1,274 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block content%}
+
+<!-- BLOQUE JS PARA OBTENER AÑO ACTUAL !-->
+	<center>
+		<h3 class="page-header" id="perfilHeader">AVANCE CURRICULAR</h3>
+		<p align="right"><a href="" class="btn btn-info" title="Ir a Detalle de Pago">Cursos Optativos</a></p>
+	</center>
+	<br>
+	<center>
+		<div class="alert alert-primary alert-dismissible fade show" role="alert">
+				<strong>¡Bienvenido!</strong> En esta sección encontrarás el avance curricular del alumno que has seleccionado. <br> Podrás ver todos los cursos que el alumno ha tomado y el estado de estos cursos.
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</center>
+
+<!-- 1ER SEMESTRE DE NIVELACION!-->
+<!-- 3ER SEMESTRE 2DOI AÑO !-->
+
+{% if postulacion %}
+{% for postulacion in postulacion %}
+{% if postulacion.nivelacion == 'Necesita' %} <!-- SI NECESITA NIVELACION, SE MUESTRA EL SEMESTRE DE NIVELACION CURSADO ANTES DE LA MALLA DEL MAGISTER!-->
+	<div class="table table-responsive">
+		<table class="table table-center table-hover table-bordered" style="border-collapse: colapse;" width="100%">
+			<thead>
+				<tr>
+					<td align="center"><b>Clave</b></td>
+					<td align="center"><b>Nombre Asignatura</b></td>
+					<td align="center"><b>Año</b></td>
+					<td align="center"><b>Semestre</b></td>
+					<td align="center"><b>Créditos</b></td>
+					<td align="center"><b>Estado</b></td>
+					<td align="center"><b>Final</b></td>
+				</tr>
+			</thead>
+		<tbody>
+			{% if avance %}
+			{% for avance in avance %}
+				<tr> 		<!--RESOLVER LOGICA DE LAS CONSULTAS EN MODELOS MANY TO MANY!-->
+							<td width="20%"><center>MII</center></td>
+							<td width="20%"><center>Evaluación de Proyectos Informáticos</center></td>
+							<td width="20%"><center>{{ avance.anio_cursado }}</center></td>
+							<td width="20%"><center>{{ avance.semestre }}</center></td>
+							<td width="20%"><center> No presenta </center></td>
+							<td width="20%"><center>{{ avance.estado }}</center></td>
+								{% if avance.estado == 'Aprobado' %}
+									<td width="20%"><center><i class="fas fa-check"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'Rechazado' %}
+									<td width="20%"><center><i class="fas fa-times"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'En proceso' %}
+									<td width="20%"><center><i class="fas fa-spinner"></i></center></span></td>
+								{% endif %}
+
+								{% if avance.estado == 'Retiro' %}
+									<td width="20%"><center><i class="fas fa-file-excel"></i></center></td>
+								{% endif %}
+				</tr>
+			{% endfor %}
+			{% endif %}
+	    </tbody>
+	</table>
+
+	{% if alumno %}
+	{% for alumno in alumno %}
+	{% if alumno.estado_matricula == 'Valida' %}
+	<pre><a><b>Periodo:</b> Semestre nivelación</a>    <a><b>Estado Matrícula:</b> Válida</a></pre>
+	{% else %}
+	<pre><a><b>Periodo:</b> Semestre nivelación</a>    <a><b>Estado Matrícula:</b> Inválida</a></pre>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+
+{% endif %}
+{% endfor %}
+{% endif %}
+
+<hr>
+<br>
+<!--TABLA DEL 1ER SEMESTRE!-->
+	<div class="table table-responsive">
+		<table class="table table-center table-hover table-bordered" style="border-collapse: colapse;" width="100%">
+			<thead>
+				<tr>
+					<td align="center"><b>Clave</b></td>
+					<td align="center"><b>Nombre Asignatura</b></td>
+					<td align="center"><b>Año</b></td>
+					<td align="center"><b>Semestre</b></td>
+					<td align="center"><b>Créditos</b></td>
+					<td align="center"><b>Estado</b></td>
+					<td align="center"><b>Final</b></td>
+				</tr>
+			</thead>
+		<tbody>
+			{% if avance %}
+			{% for avance in avance %}
+				<tr>
+							<td width="20%"><center>MII711</center></td>
+							<td width="20%"><center>Administración de Proyectos Informáticos</center></td>
+							<td width="20%"><center>{{ avance.anio_cursado }}</center></td>
+							<td width="20%"><center>{{ avance.semestre }}</center></td>
+							<td width="20%"><center>6</center></td>
+							<td width="20%"><center>{{ avance.estado }}</center></td>
+								{% if avance.estado == 'Aprobado' %}
+									<td width="20%"><center><i class="fas fa-check"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'Rechazado' %}
+									<td width="20%"><center><i class="fas fa-times"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'En proceso' %}
+									<td width="20%"><center><i class="fas fa-spinner"></i></center></span></td>
+								{% endif %}
+
+								{% if avance.estado == 'Retiro' %}
+									<td width="20%"><center><i class="fas fa-file-excel"></i></center></td>
+								{% endif %}
+				</tr>
+			{% endfor %}
+			{% endif %}
+	    </tbody>
+	</table>
+
+	{% if alumno %}
+	{% for alumno in alumno %}
+	{% if alumno.estado_matricula == 'Valida' %}
+	<pre><a><b>Periodo:</b> 1er Semestre</a>    <a><b>Estado Matrícula:</b> Válida</a></pre>
+	{% else %}
+	<pre><a><b>Periodo:</b> 1er Semestre</a>    <a><b>Estado Matrícula:</b> Inválida</a></pre>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+
+<hr>
+<br>
+<!-- SEGUNDO SEMESTRE PRIMER AÑO!-->
+
+	<div class="table table-responsive">
+		<table class="table table-center table-hover table-bordered" style="border-collapse: colapse;" width="100%">
+			<thead>
+				<tr>
+					<td align="center"><b>Clave</b></td>
+					<td align="center"><b>Nombre Asignatura</b></td>
+					<td align="center"><b>Año</b></td>
+					<td align="center"><b>Semestre</b></td>
+					<td align="center"><b>Créditos</b></td>
+					<td align="center"><b>Estado</b></td>
+					<td align="center"><b>Final</b></td>
+				</tr>
+			</thead>
+		<tbody>
+			{% if avance %}
+			{% for avance in avance %}
+				<tr>
+							<td width="20%"><center>MII721</center></td>
+							<td width="20%"><center>Inteligencia de Negocios</center></td>
+							<td width="20%"><center>{{ avance.anio_cursado }}</center></td>
+							<td width="20%"><center>{{ avance.semestre }}</center></td>
+							<td width="20%"><center>6</center></td>
+							<td width="20%"><center>{{ avance.estado }}</center></td>
+								{% if avance.estado == 'Aprobado' %}
+									<td width="20%"><center><i class="fas fa-check"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'Rechazado' %}
+									<td width="20%"><center><i class="fas fa-times"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'En proceso' %}
+									<td width="20%"><center><i class="fas fa-spinner"></i></center></span></td>
+								{% endif %}
+
+								{% if avance.estado == 'Retiro' %}
+									<td width="20%"><center><i class="fas fa-file-excel"></i></center></td>
+								{% endif %}
+				</tr>
+			{% endfor %}
+			{% endif %}
+	    </tbody>
+	</table>
+
+	{% if alumno %}
+	{% for alumno in alumno %}
+	{% if alumno.estado_matricula == 'Valida' %}
+	<pre><a><b>Periodo:</b> 2do Semestre</a>    <a><b>Estado Matrícula:</b> Válida</a></pre>
+	{% else %}
+	<pre><a><b>Periodo:</b> 2do Semestre</a>    <a><b>Estado Matrícula:</b> Inválida</a></pre>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+
+<hr>
+<br>
+
+<!-- 3ER SEMESTRE 2DOI AÑO !-->
+
+
+	<div class="table table-responsive">
+		<table class="table table-center table-hover table-bordered" style="border-collapse: colapse;" width="100%">
+			<thead>
+				<tr>
+					<td align="center"><b>Clave</b></td>
+					<td align="center"><b>Nombre Asignatura</b></td>
+					<td align="center"><b>Año</b></td>
+					<td align="center"><b>Semestre</b></td>
+					<td align="center"><b>Créditos</b></td>
+					<td align="center"><b>Estado</b></td>
+					<td align="center"><b>Final</b></td>
+				</tr>
+			</thead>
+		<tbody>
+			{% if avance %}
+			{% for avance in avance %}
+				<tr>
+							<td width="20%"><center>MII795</center></td>
+							<td width="20%"><center>Proyecto de Tesis</center></td>
+							<td width="20%"><center>{{ avance.anio_cursado }}</center></td>
+							<td width="20%"><center>{{ avance.semestre }}</center></td>
+							<td width="20%"><center>12</center></td>
+							<td width="20%"><center>{{ avance.estado }}</center></td>
+								{% if avance.estado == 'Aprobado' %}
+									<td width="20%"><center><i class="fas fa-check"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'Rechazado' %}
+									<td width="20%"><center><i class="fas fa-times"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'En proceso' %}
+									<td width="20%"><center><i class="fas fa-spinner"></i></center></span></td>
+								{% endif %}
+
+								{% if avance.estado == 'Retiro' %}
+									<td width="20%"><center><i class="fas fa-file-excel"></i></center></td>
+								{% endif %}
+				</tr>
+			{% endfor %}
+			{% endif %}
+	    </tbody>
+	</table>
+
+	{% if alumno %}
+	{% for alumno in alumno %}
+	{% if alumno.estado_matricula == 'Valida' %}
+	<pre><a><b>Periodo:</b> 3er Semestre</a>    <a><b>Estado Matrícula:</b> Válida</a></pre>
+	{% else %}
+	<pre><a><b>Periodo:</b> 3er Semestre</a>    <a><b>Estado Matrícula:</b> Inválida</a></pre>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+
+
+	<!-- CÓDIGO DE GRÁFICOS !-->
+
+	
+</div>
+
+<style>
+	.table.table-center {
+  width: auto;
+  margin: 0 auto;
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<!--TÍTULO DE PLANTILLA!-->
+
+<center>
+  <h2>DOCENTES REGISTRADOS</h2><p align="right"><button class="btn btn-danger"><a href=""><i class="fas fa-cogs"></i></button></a></p><hr>
+</center>
+
+<!--CUADRO DE TEXTO CON INFORMACIÓN!-->
+
+  <center>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>¡Bienvenido!</strong> En esta sección encontrarás un listado con todos los <b>docentes</b> registrados en el sistema <br> Podrás ingresar a las funcionalidades disponibles con los botones rápido. ¡Pincha uno e inténtalo!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+
+<table id="tablaDocentes" class="table table-responsive table-bordered">
+    <thead>
+      <tr>
+        <td colspan="5" align="center" width="10" height="10" bgcolor="#317792"><font color="#ffffff"><b>Datos Docente</b></font></td>
+        <td colspan="3" align="center" width="10" height="10" bgcolor="#317792"><font color="#ffffff"><b>Acciones</b></font></td>
+        <tr>
+          <td bgcolor="#317792"><font color="#ffffff">Rut</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Nombres</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Apellido Paterno</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Apellido Materno</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Email</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Ficha Académica</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Ver Cursos</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Datos Contacto</font></td>
+      </tr>
+    </tr>
+  </thead>
+  <tbody>
+  {% if object_list %}
+  {% for profesor in object_list %}
+  <tr>
+    <td><a href="{% url 'ficha_docente' profesor.pk %}" title="Ir a Ficha Académica"><u>{{ profesor.rut }}</u></a></td>
+    <td>{{ profesor.nombre }}</td>
+    <td>{{ profesor.apellido_pat }}</td>
+    <td>{{ profesor.apellido_mat }}</td>
+    <td>{{ profesor.mail }}</td>
+    <td>
+      <a href="{% url 'ficha_docente' profesor.pk %}" class="btn btn-primary" title="Ir a Ficha Docente">Ficha Docente</a>
+    </td>
+    <td>
+      <a href="{% url 'cursos_dictados' profesor.pk %}" class="btn btn-info" title="Ver datos de Cursos">Cursos</a>
+    </td>
+    <td>
+      <a href="{% url 'datos_direccion' profesor.pk %}" class="btn btn-primary" title="Ver datos de Contacto">Contacto</a>
+    </td>
+  </tr>
+  {% endfor %}
+  {% else %}
+  <h1 align="center">No hay registros de Profesores</h1>
+  {% endif %}
+  </tbody>
+</table>
+
+<style>
+td {
+  font-size: 15px;
+}
+</style>
+
+{% endblock content %}

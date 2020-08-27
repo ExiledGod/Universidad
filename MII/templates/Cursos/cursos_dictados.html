@@ -1,0 +1,102 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<!--TÍTULO DE PLANTILLA!-->
+
+<center>
+  <h2>CURSOS DICTADOS</h2><p align="right"><button class="btn btn-danger"><a href=""><i class="fas fa-cogs"></i></button></a></p><hr>
+</center>
+
+<!--CUADRO DE TEXTO CON INFORMACIÓN!-->
+
+  <center>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>¡Bienvenido!</strong> En esta sección encontrarás un listado con todos los <b>cursos</b> que ha dictado este docente registrados en el sistema <br> Selecciona cualquiera para ver el detalle del curso. ¡Inténtalo!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+  
+  {% for profesor in profesor %}
+				<h4 style="text-align: center;" id="h3"><p><small><font color="#132B34"><b><i class="fas fa-info-circle"></i> Información básica <i class="fas fa-info-circle"></i></b></font></small></p></h4>
+					<div>
+						<hr>
+							<h6> <font color="#203A43"><b>Nombre <i class="fas fa-user-friends"></i>:</b> </font>{{ profesor.nombre}} {{detalle_curso.profesor.apellido_pat}} {{profesor.apellido_mat}} </h6>
+							<h6><font color="#203A43"> <b>Rut <i class="far fa-address-card"></i>: </font></b> {{ profesor.rut }}</h6>
+							<h6><font color="#203A43"> <b>E-mail <i class="far fa-envelope"></i>:</font></b> {{ profesor.mail }}</h6>
+							<h6><font color="#203A43"> <b>Teléfono <i class="fas fa-phone"></i>:</font></b>  {{ profesor.telefono }}</h6>
+						<hr>
+					</div>
+{% endfor %}
+
+				<h4 style="text-align: center;" id="h3"><p><small><font color="#5A2B21"><b><i class="fas fa-chalkboard-teacher"></i> CURSOS DICTADOS <i class="fas fa-chalkboard-teacher"></i></b></font></small></p></h4>
+
+
+<table class="table table-responsive table-bordered">
+    <thead>
+      <tr>
+        <tr>
+          <td bgcolor="#317792"><font color="#ffffff">Curso</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Año</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Semestre</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Paralelo</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Inscritos</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Aprobados</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Reprobados</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Descripción</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Detalle</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Imprimir</font></td>      
+      </tr>
+    </tr>
+  </thead>
+  <tbody>
+  	{% if cursos %}
+	{% for detalle_curso in cursos %}
+<tr>
+	<td>{{ detalle_curso.curso.sigla}} - {{detalle_curso.curso.nombre}}</td>
+	<td><center>{{detalle_curso.anio_cursado}}</center></td>
+	<td><center>{{detalle_curso.semestre}}</center></td>
+	<td><center>{{detalle_curso.paralelo}}</center></td>
+	<td><center>{{detalle_curso.inscritos}}</center></td>
+	<td><center>{{detalle_curso.aprobados}}</center></td>
+	<td><center>{{detalle_curso.rechazados}}</center></td>
+	<td>{{detalle_curso.descripcion}}</td>
+	<td>
+		<button class="btn btn-success"><a href="{% url 'detalle_curso' detalle_curso.curso.pk %}"><i class="far fa-eye"></i> Ver Detalle</button></a></p>
+	</td>
+  <td>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalHistorico"><i class="fas fa-plus"></i>
+           Generar Reporte
+          </button>
+              <div class="modal fade" id="ModalHistorico" tabindex="-1" role="dialog" aria-labelledby="#ModalHistorico" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalHistorico">Generar Reporte {{detalle_curso.curso.nombre}} {{detalle_curso.curso.sigla}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            A continuación, se descargará un archivo en formato PDF que contiene la información del curso. <br><br>
+            Apreta el botón 'Generar' para comenzar la descarga.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Generar</button>
+          </div>
+        </div>
+      </div>
+    </div>        
+  </td>
+</tr>
+	{% endfor %}
+  	{% else %}
+  <h1 align="center">No hay registros de cursos dictados</h1>
+  {% endif %}
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,175 @@
+<!-- PLANTILLA QUE REEMPLAZA AL HOME CON INFORMACIÓN DISTINTA!-->
+
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<h1>HOLA</h1>
+
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+		<i class="fas fa-align-left"></i>
+	</button>
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header" align="center">
+		        		<h5 class="modal-title" id="exampleModalLabel" align="center"><center><b>¡Bienvenido a la sección de ayuda, {{ user.username }}!</b></center></h5>
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          			<span aria-hidden="true">&times;</span>
+		        		</button>
+		      		</div>
+		      		<div class="modal-body">
+		        		<p align="justify">Aquí encontrarás un pequeño tutorial sobre cómo navegar en todas las funcionalidades que posee el Sistema MII.<br>
+		        		Apreta el botón Siguiente para comenzar.</p>
+		      		</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+		        		<button type="button" class="btn btn-success" data-toggle="modal" data-dismiss="modal" data-target="#modal1">Siguiente</button>
+		        	</div>
+		        </div>
+		    </div>
+		</div>
+	<div class="modal2">
+		<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header" align="center">
+		        		<h5 class="modal-title" id="exampleModalLabel" align="center"><center><b>Módulo Alumno</b></center></h5>
+		        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          				<span aria-hidden="true">&times;</span>
+		        			</button>
+		      		</div>
+		      		<div class="modal-body">
+		        		En este módulo encontrarás 3 funcionalidades relacionadas con la Administración y Gestión de los Alumnos del Programa. <br><br>
+		        		<li type="disc"><b>Ver Fichas Académicas: </b></li><p align="justify">Aquí podrás hacer una búsqueda rápida de la Ficha Académica de cada alumno con su rut, nombre o correo.</p>
+		        		<li type="disc"><b>Listado de Alumnos: </b></li><p align="justify">En esta sección se encuentra un listado con todos los alumnos registrados en la aplicación. ¡Pincha en sus funciones para acceder a ellas!</p>
+		        		<li type="disc"><b>Registro de Alumno: </b></li><p align="justify">Puedes ingresar alumnos al sistema cuando quieras. Sólo debes ingresar en Registro de Alumno y rellenar los campos.</p>
+		      		</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#modal2">Siguiente</button>
+		      		</div>
+		    	</div>
+		 	</div>
+		</div>
+	</div>
+	<div class="modal3">
+		<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header" align="center">
+		        		<h5 class="modal-title" id="exampleModalLabel" align="center"><center><b>Módulo Docente</b></center></h5>
+		        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          				<span aria-hidden="true">&times;</span>
+		        			</button>
+		      		</div>
+		      		<div class="modal-body">
+		        		En este módulo encontrarás 3 funcionalidades relacionadas con la Administración y Gestión de los Docentes del Programa. <br><br>
+		        		<li type="disc"><b>Ver Fichas Docentes: </b></li><p align="justify">Aquí podrás hacer una búsqueda rápida de la Ficha Docente de cada Docente con su rut, nombre o correo.</p>
+		        		<li type="disc"><b>Listado de Docentes: </b></li><p align="justify">En esta sección se encuentra un listado con todos los Docentes registrados en la aplicación. ¡Pincha en sus funciones para acceder a ellas!</p>
+		        		<li type="disc"><b>Registro de Docente: </b></li><p align="justify">Puedes ingresar Docentes al sistema cuando quieras. Sólo debes ingresar en Registro de Docente y rellenar los campos.</p>
+		      		</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#modal3">Siguiente</button>
+		      		</div>
+		    	</div>
+		 	</div>
+		</div>
+	</div>
+	<div class="modal4">
+		<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header" align="center">
+		        		<h5 class="modal-title" id="exampleModalLabel" align="center"><center><b>Módulo Situación Administrativa</b></center></h5>
+		        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          				<span aria-hidden="true">&times;</span>
+		        			</button>
+		      		</div>
+		      		<div class="modal-body">
+		        		<p align="justify">En este módulo encontrarás funcionalidades dirigidas específicamente a la Administración de reportes generados, documentos, reglamentos y seguimiento estudiantil a los alumnos que estén en periodo de Titulación<br></p>
+		        		<p align="justify">Puedes pinchar en <b>Proceso de Titulación</b> para acceder a los estados de cada uno de los matriculados</p>
+		      		</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#modal4">Siguiente</button>
+		      		</div>
+		    	</div>
+		 	</div>
+		</div>
+	</div>
+	<div class="modal5">
+		<div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header" align="center">
+		        		<h5 class="modal-title" id="exampleModalLabel" align="center"><center><b>Módulo Cursos</b></center></h5>
+		        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          				<span aria-hidden="true">&times;</span>
+		        			</button>
+		      		</div>
+		      		<div class="modal-body">
+		        		En este módulo encontrarás 3 funcionalidades relacionadas con los cursos que existen en el Programa de Magíster. <br><br>
+		        		<li type="disc"><b>Cursos en Malla Curricular: </b></li><p align="justify">En esta sección se encuentran todos los cursos pertenecientes a la Malla Curricular y una breve descripción de estos.</p>
+		        		<li type="disc"><b>Históricos: </b></li><p align="justify">Registro de todos los cursos dictados desde año 2015 en adelante. ¡Pincha en algún curso para analizar estadísticas y listado de alumnos de este!</p>
+		        		<li type="disc"><b>Agregar Curso: </b></li><p align="justify">Puedes ingresar nuevos cursos al sistema cuando quieras. Sólo debes ingresar en <b>Agregar Curso</b> y rellenar los campos.</p>
+		      		</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#modal5">Siguiente</button>
+		      		</div>
+		    	</div>
+		 	</div>
+		</div>
+	</div>
+	<div class="modal6">
+		<div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header" align="center">
+		        		<h5 class="modal-title" id="exampleModalLabel" align="center"><center><b>Módulo Becas y Pagos</b></center></h5>
+		        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          				<span aria-hidden="true">&times;</span>
+		        			</button>
+		      		</div>
+		      		<div class="modal-body">
+		        		<p align="justify">En este módulo encontrarás las funcionalidades relacionadas con los pagos, beneficios, deudas y cobros que posean los alumnos matriculados <br><br>
+		        		<b>¡Selecciona la sección que te interese y busca la situación de cada uno de los alumnos!</b></p>
+		      		</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#modal6">Siguiente</button>
+		      		</div>
+		    	</div>
+		 	</div>
+		</div>
+	</div>
+	<div class="modal7">
+		<div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header" align="center">
+		        		<h5 class="modal-title" id="exampleModalLabel" align="center"><center><b>Contacto y Desarrolladores</b></center></h5>
+		        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          				<span aria-hidden="true">&times;</span>
+		        			</button>
+		      		</div>
+		      		<div class="modal-body">
+		        		<p align="justify">En las últimas secciones encontrarás el Contacto de los desarrolladores de la Plataforma y un poco de su historia. <br>
+		        			<b>¡Pincha en esas secciones para conocerlos!</b><br>
+		        		Esperamos que este pequeño tutorial haya sido de ayuda</p>
+
+		      		</div>
+		      		<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Entendido</button>
+		      		</div>
+		    	</div>
+		 	</div>
+		</div>
+	</div>
+
+	<!--
+	CÓDIGOS DE LAS IMAGENES QUE VAN DENTRO DE LOS MODALES
+
+	<div align="right"><img src="{% static 'img/ver_ficha.jpg' %}" alt="" width="300" height="150"></div>
+
+	!-->
+{% endblock %}

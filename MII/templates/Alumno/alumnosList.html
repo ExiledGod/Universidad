@@ -1,0 +1,89 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+
+<!--TÍTULO DE PLANTILLA!-->
+
+<center>
+  <h2>ALUMNOS REGISTRADOS</h2><p align="right"><button class="btn btn-danger"><a href=""><i class="fas fa-cogs"></i></button></a></p><hr>
+</center>
+
+<!--CUADRO DE TEXTO CON INFORMACIÓN!-->
+
+  <center>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>¡Bienvenido!</strong> En esta sección encontrarás un listado con todos los <b>alumnos</b> registrados en el sistema <br> Podrás ingresar a las funcionalidades disponibles con los botones rápido. ¡Pincha uno e inténtalo!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+
+<table id="tablaAlumnos" class="table table-responsive table-bordered">
+	<thead>
+		<tr>
+			<td colspan="6" align="center" width="10" height="10" bgcolor="#1F618D"><font color="#ffffff"><b>Datos Alumno</b></font></td>
+			<td colspan="3" align="center" width="10" height="10" bgcolor="#1F618D"><font color="#ffffff"><b>Acciones</b></font></td>
+			<tr>
+				<td bgcolor="#317792"><font color="#ffffff">Rut</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Nombres</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Apellido Paterno</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Apellido Materno</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Fecha Nacimiento</font></td>
+				<td bgcolor="#317792"><a href=""><font color="#ffffff">Estado</font></a></td>
+				<td bgcolor="#317792"><font color="#ffffff">Ficha Académica</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Datos Postulación</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Avance Curricular</font></td>
+			</tr>
+		</tr>
+	</thead>
+	<tbody>
+	{% if object_list %}
+	{% for alumno in object_list %}
+	<tr>
+		<td><a href="{% url 'ficha_academica' alumno.pk %}" title="Ir a Ficha Académica"><u>{{ alumno.rut }}</u></a></td>
+		<td>{{ alumno.nombre }}</td>
+		<td>{{ alumno.apellido_pat }}</td>
+		<td>{{ alumno.apellido_mat }}</td>
+		<td>{{ alumno.fecha_nac }}</td>
+		<td>
+			{% if alumno.estado == 'Postulante' %}
+				<font color="#9DA706">{{ alumno.estado }} </font>
+			{% endif %}
+			{% if alumno.estado == 'Matriculado' %}
+				<font color="#15A706">{{ alumno.estado }} </font>
+			{% endif %}
+			{% if alumno.estado == 'En Espera' %}
+				<font color="#063EA7">{{ alumno.estado }}</font>
+			{% endif %}
+			{% if alumno.estado == 'Rechazado' %}
+				<font color="#A70612">{{ alumno.estado }}</font>
+			{% endif %}
+		</td>
+		<td>
+			<a href="{% url 'ficha_academica' alumno.pk %}" class="btn btn-primary" title="Ir a Ficha Académica">Ficha Académica</a>
+		</td>
+		<td>
+			<a href="{% url 'datos_postulacion_alumno' alumno.pk %}" class="btn btn-info" title="Ver datos de Postulación">Postulación</a>
+		</td>
+		<td>
+			<a href="{% url 'avance_curricular' alumno.pk %}" class="btn btn-primary" title="Ver Avance Curricular Alumno">Avance Curricular</a>
+		</td>
+	</tr>
+	{% endfor %}
+	{% else %}
+	<h1 align="center">No hay registros de Alumnos</h1>
+	{% endif %}
+	</tbody>
+</table>
+
+<p></p>
+
+<style>
+td {
+	font-size: 15px;
+}
+</style>
+
+{% endblock content %}

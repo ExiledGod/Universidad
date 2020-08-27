@@ -1,0 +1,84 @@
+Bienvenido a MII.
+
+Antes de comenzar a utilizar esta aplicación, debes instalar una serie de dependencias en tu equipo para poder vizualizarla. A continuación, se detallan los componentes necesarios:
+
+1- django 2.1.2
+2- python 3.0
+3- pip 19.0.3
+4- postgresql 9.5
+
+Dentro de la pip list, se encuentran los siguientes:
+
+Package                            Version
+---------------------------------- ----------
+certifi                            2018.10.15
+chardet                            3.0.4
+colorama                           0.4.1
+confusable-homoglyphs              3.2.0
+cycler                             0.10.0
+decorate-url                       1.1
+dj-database-url                    0.5.0
+Django                             2.1.2
+django-appconf                     1.0.3
+django-awesome-avatar              1.1.3
+django-axes                        4.5.4
+django-betterforms                 1.2
+django-bootstrap-datepicker-plus   3.0.5
+django-bootstrap-datepicker-widget 0.1
+django-bootstrap3                  11.0.0
+django-bootstrap4                  0.0.7
+django-braces                      1.13.0
+django-datatable                   0.3.1
+django-extensions                  2.1.3
+django-glrm                        1.1.3
+django-ipware                      2.1.0
+django-jquery                      3.1.0
+django-localflavor                 2.1
+django-model-utils                 3.1.2
+django-multiselectfield            0.1.8
+django-pdb                         0.6.2
+django-registration                3.0
+django-request                     1.5.4
+django-rest-framework              0.1.0
+django-smart-selects               1.5.4
+django-widget-tweaks               1.4.3
+djangorestframework                3.9.0
+httpie                             1.0.2
+idna                               2.7
+Jinja2                             2.10.1
+kiwisolver                         1.1.0
+MarkupSafe                         1.1.1
+matplotlib                         3.0.3
+names                              0.3.0
+numpy                              1.16.3
+Pillow                             5.3.0
+pip                                19.0.3
+psycopg2                           2.6.2
+Pygments                           2.3.0
+pyparsing                          2.4.0
+python-dateutil                    2.8.0
+python-decouple                    3.1
+pytz                               2018.5
+reportlab                          3.5.21
+requests                           2.20.1
+setuptools                         28.8.0
+six                                1.11.0
+South                              1.0.2
+urllib3                            1.24.1
+wheel                              0.32.3
+
+¡¡RECORDAR QUE SE DEBEN INSTALAR POR CONSOLA SEGUIDOS DEL COMANDO pip install !!
+
+Para ajustes de base de datos, abra POSTGRESQL, cree una base de datos llamada 'MII' y haga restore del backup llamado 'mii.backup' que se encuentra en la carpeta llamada 'backups MII'.
+Posteriormente, ingrese a 'localhost:8000/MII/login' para iniciar sesión.
+
+user: usuario
+password: 123
+
+¡Esperamos sea una experiencia satisfactoria!
+
+-Equipo MII
+
+-Luis Sandoval Cisternas (sanvalluis94@gmail.com)
+-Nadia Torres Leyton (nadiatorresleyton@gmail.com)
+-Catalina Pizarro Aguilera (kathuwhatsap@hotmail.com)

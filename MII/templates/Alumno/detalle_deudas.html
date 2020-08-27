@@ -1,0 +1,55 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<center>
+	<h1>DETALLE DE DEUDAS </h1><hr>
+</center>
+
+<h5>Alumno <i class="fas fa-graduation-cap"></i></h5>
+
+{% for alumno in alumno %}
+	<h6>{{ alumno.nombre }} {{ alumno.apellido_pat}} {{ alumno.apellido_mat}}</h6>
+	<h6>{{ alumno.rut }}</h6>
+{% endfor %}
+<hr>
+<br>
+
+<!-- CÓDIGO LISTADO DE COBROS !-->
+
+<table id="tablaAlumnos" class="table table-responsive table-bordered">
+	<thead>
+		<tr>
+			<tr>
+				<td bgcolor="#1F618D"><font color="#ffffff"></font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff"></font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff"></font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff"></font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff"></font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff"></font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff"></font></td>
+			</tr>
+		</tr>
+	</thead>
+	<tbody>
+	{% if alumno %}
+	{% for alumno in alumno %}
+	<tr>
+		<td><a href="" title="Ir a Ficha Académica"><u></u></a></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>
+			<a href="{% url 'pagos_alumno' alumno.pk %}" class="btn btn-info" title="Ir a Detalle de Pago"><i class="fas fa-money-check-alt"></i> Detalle Pago</a>
+		</td>
+	</tr>
+	{% endfor %}
+	{% else %}
+	<h1 align="center">No hay registros de Alumnos</h1>
+	{% endif %}
+	</tbody>
+</table>
+
+{% endblock %}

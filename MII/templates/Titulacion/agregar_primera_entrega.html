@@ -1,0 +1,71 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+{% load bootstrap4 %}
+
+<!-- FORMULARIO DE CREACIÓN DE TITULACIÓN!-->
+<form method="post">
+    {% csrf_token %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+     <legend class="text-center header"><i class="far fa-edit"></i> AGREGAR PRIMERA ENTREGA <i class="far fa-edit"></i></legend>
+  				<center>
+    				<div class="alert alert-primary alert-dismissible fade show" role="alert">
+        				<strong>¡Bienvenido!</strong> Selecciona un alumno y agrega su primera entrega
+      						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          						<span aria-hidden="true">&times;</span>
+      						</button>
+    				</div>
+  				</center>
+            <div class="form-group">
+                <label for ="{{ form.alumno.alumno }}">{{form.alumno.label}}</label>
+                {{form.alumno}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.nombre.nombre }}">{{form.nombre.label}}</label>
+                {{form.nombre}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.fecha_entrega.fecha_entrega }}">{{form.fecha_entrega.label}}</label>
+                {{form.fecha_entrega}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.nota.nota }}">{{form.nota.label}}</label>
+                {{form.nota}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.comentario.comentario }}">{{form.comentario.label}}</label>
+                {{form.comentario}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.archivo.archivo }}">{{form.archivo.label}}</label>
+                {{form.archivo}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.tipo.tipo }}">{{form.tipo.label}}</label>
+                {{form.tipo}}
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <input type="submit" value="Agregar" class="btn btn-primary btn-block">
+            </div>
+        </div> 
+    </div>
+</form>
+</div>
+{% endblock %}

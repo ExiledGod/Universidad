@@ -1,0 +1,42 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+
+<!--TÍTULO DE PLANTILLA!-->
+
+<center>
+  <h2>SITUACIÓN ACTUAL ALUMNO</h2><p align="right"><button class="btn btn-danger"><a href=""><i class="fas fa-cogs"></i></button></a></p><hr>
+</center>
+
+<!--CUADRO DE TEXTO CON INFORMACIÓN!-->
+
+  <center>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>¡Bienvenido!</strong> En esta sección encontrarás la situación actual en la que se encuentra el alumno. 
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+
+<!-- SITUACIÓN ACTUAL DEL ALUMNO !-->
+
+<h4 style="text-align: center;" id="h3"><p><small><font color="#132B34"><b><i class="fas fa-info-circle"></i> Información básica <i class="fas fa-info-circle"></i></b></font></small></p></h4>
+	<div>
+		<hr>
+			{% for alumno in alumno%}
+				<h6 id="usuario"> <font color="#203A43"><b>Nombre <i class="fas fa-user-friends"></i>:</b> </font>{{ alumno.nombre}} {{alumno.apellido_pat}} {{alumno.apellido_mat}} </h6>
+				<h6 id="usuario"><font color="#203A43"> <b>Rut <i class="far fa-address-card"></i>: </font></b> {{ alumno.rut }}</h6>
+				<h6 id="usuario"><font color="#203A43"> <b>E-mail <i class="far fa-envelope"></i>:</font></b> {{ alumno.mail }}</h6>
+				<hr>
+			{% endfor %}
+	</div>
+<br>
+
+<h4 style="text-align: center;" id="h3"><p><small><font color="#132B34"><b><i class="fas fa-info-circle"></i> Estado Actual <i class="fas fa-info-circle"></i></b></font></small></p></h4>
+
+<p>¡El Alumno actualmente está cursando el ramo <b>MII790 Seminario de Tesis</b>!</p>
+<p><font color='black'>Te recomendamos ir a la sección <b>Agregar Alumno</b> en el Listado de alumnos para crear la titulación correspondiente en el Sistema</font></p>
+<h5></h5>
+{% endblock %}

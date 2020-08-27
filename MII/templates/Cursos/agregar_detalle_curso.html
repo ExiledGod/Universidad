@@ -1,0 +1,113 @@
+{% extends 'Base/base.html' %}
+{% block content %}
+
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<div class="container">
+    <div class="form-group">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>
+                <div class="{{ message.tags }}" style="height:35px; width:100%; text-align: center" > {{ message }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+        <legend class="text-center header"> AGREGAR REGISTRO DE CURSO DICTADO </legend><br>
+            <center>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <strong>¡Bienvenido!</strong> En esta sección puedes agregar un detalle de curso dictado al sistema. <br>
+                    Rellena todos los datos y asegúrate de que sean válidos.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            </center>
+            <div class="form-group">
+                <label for ="{{ form.profesor.profesor }}">{{form.profesor.label}}</label>
+                {{form.profesor}}
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.lista_alumnos.lista_alumnos }}">{{form.lista_alumnos.label}}</label>
+                {{form.lista_alumnos}}
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.curso.curso }}">{{form.curso.label}}</label>
+                {{form.curso}}
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.anio_cursado.anio_cursado }}">{{form.anio_cursado.label}}</label>
+                {{form.anio_cursado}}
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.semestre.semestre }}">{{form.semestre.label}}</label>
+                {{form.semestre}}
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.paralelo.paralelo }}">{{form.paralelo.label}}</label>
+                {{form.paralelo}}
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.inscritos.inscritos }}">{{form.inscritos.label}}</label>
+                {{form.inscritos}}
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.aprobados.aprobados }}">{{form.aprobados.label}}</label>
+                {{form.aprobados}}
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.rechazados.rechazados }}">{{form.rechazados.label}}</label>
+                {{form.rechazados}}
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.descripcion.descripcion }}">{{form.descripcion.label}}</label>
+                {{form.descripcion}}
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <input type="submit" value="Agregar" class="btn btn-primary btn-block">
+            </div>
+        </div> 
+    </div>
+</form>
+</div>
+{% endblock content %}

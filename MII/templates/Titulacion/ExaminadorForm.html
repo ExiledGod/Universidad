@@ -1,0 +1,65 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+{% load bootstrap4 %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+     <legend class="text-center header"><i class="far fa-edit"></i> AGREGAR PROFESOR EXAMINADOR <i class="far fa-edit"></i></legend>
+            <center>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <strong>¡Bienvenido!</strong> En esta sección puedes agregar los datos de un profesor examinador de tesis sistema. <br>
+                    Rellena todos los datos y asegúrate de que sean datos válidos.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            </center>
+            <div class="form-group">
+                <label for ="{{ form.nombre.nombre }}">{{form.nombre.label}}</label>
+                {{form.nombre}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.apellido_pat.apellido_pat }}">{{form.apellido_pat.label}}</label>
+                {{form.apellido_pat}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.apellido_mat.apellido_mat }}">{{form.apellido_mat.label}}</label>
+                {{form.apellido_mat}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.rut.rut }}">{{form.rut.label}}</label>
+                {{form.rut}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.mail.mail }}">{{form.mail.label}}</label>
+                {{form.mail}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.titulo.titulo }}">{{form.titulo.label}}</label>
+                {{form.titulo}}
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary btn-block">
+            </div>
+        </div> 
+    </div>
+</form>
+</div>
+{% endblock %}

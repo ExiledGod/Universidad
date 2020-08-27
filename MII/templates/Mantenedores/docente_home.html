@@ -1,0 +1,157 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<!--TÍTULO DE PLANTILLA!-->
+{% for profesor in profesor%}
+<center>
+  <h2>MANTENEDOR DOCENTE</h2><p align="right"><button class="btn btn-danger"><a href="{% url 'eliminar_profesor' profesor.pk %}"><i class="fas fa-trash-alt"></i> ELIMINAR DOCENTE </button></a></p><hr>
+</center>
+{% endfor %}
+
+<!-- INFORMACIÓN BÁSICA DEL DOCENTE !-->
+
+<div>
+	<h4 style="text-align: center;" id="h3"><p><small><font color="#132B34"><b><i class="fas fa-info-circle"></i> Información básica <i class="fas fa-info-circle"></i></b></font></small></p></h4>
+		<div>
+			<hr>
+				{% for profesor in profesor %}
+					<h6 id="usuario"> <font color="#203A43"><b>Nombre <i class="fas fa-user-friends"></i>:</b> </font>{{ profesor.nombre}} {{profesor.apellido_pat}} {{alumno.apellido_mat}} </h6>
+					<h6 id="usuario"><font color="#203A43"> <b>Rut <i class="far fa-address-card"></i>: </font></b> {{ profesor.rut }}</h6>
+					<h6 id="usuario"><font color="#203A43"> <b>E-mail <i class="far fa-envelope"></i>:</font></b> {{ profesor.mail }}</h6>
+					<h6 id="usuario"><font color="#203A43"> <b>Teléfono <i class="fas fa-phone"></i>:</font></b>  {{ profesor.telefono }}</h6>
+			<hr>
+				{% endfor %}
+		</div>
+</div>
+
+<!-- DATOS DE DIRECCIÓN !-->
+
+<div>
+	<h4 style="text-align: center;" id="h3"><p><small><font color="#265135"><b><i class="fas fa-map-marker-alt"></i> Dirección Permanente <i class="fas fa-map-marker-alt"></i></b></font></small></p></h4><p align="right"><button class="btn btn-info"><a href=""><i class="fas fa-cogs"></i> EDITAR </button></a></p>
+
+		<div>
+			<hr>
+				{% for direccionprofesor in direccion %}
+					<h6><font color="#265135"><b> Región <i class="fas fa-globe-americas"></i>: </b>{{ direccionprofesor.region.nombre }}</h6>
+					<h6><font color="#265135"><b> Provincia <i class="fas fa-globe-americas"></i>: </b>{{ direccionprofesor.provincia.nombre }}</h6>
+					<h6><font color="#265135"><b> Comuna <i class="far fa-building"></i>: </b>{{ direccionprofesor.comuna.nombre }}</h6>
+					<h6><font color="#265135"><b> Dirección <i class="fas fa-home"></i>: </b>{{ direccionprofesor.direccion }}</h6>
+			<hr>
+				{% endfor %}
+		</div>
+</div>
+
+<!-- DATOS DE GRADO !-->
+
+<div>
+	<h4 style="text-align: center;" id="h3"><p><small><font color="#21395A"><b><i class="fas fa-book"></i> Datos de Grados <i class="fas fa-book"></i></b></font></small></p></h4><p align="right"><button class="btn btn-info"><a href=""><i class="fas fa-cogs"></i> EDITAR</button></a></p>
+
+<center>
+<div class="col-md-12 tableCenter">
+	<table id="tablaGrado" class="table table-responsive table-hover" style="margin: 0 auto;">
+	    <thead>
+	      	<tr>
+	        	<tr>
+			        <td bgcolor="#317792" width="22%"><font color="#ffffff">Tipo de Grado</font></td>
+			         <td bgcolor="#317792" width="22%"><font color="#ffffff">Institución de Obtención</font></td>
+			         <td bgcolor="#317792" width="22%"><font color="#ffffff">Nombre Grado</font></td>
+			         <td bgcolor="#317792" width="22%"><font color="#ffffff">Año de Obtención</font></td>
+	      		</tr>
+	    	</tr>
+	    </thead>
+	    <tbody>
+	  		{% if grado %}
+			{% for tipogrado in grado %}
+				<tr>
+					<td width="22%">{{ tipogrado.nombre_tipo}} </td>
+					<td width="22%">{{ tipogrado.institucion }}</td>
+					<td width="22%">{{ tipogrado.nombre}} </td>
+					<td width="22%"><center>{{ tipogrado.anio_obtencion }}</center></td>
+				</tr>
+		{% endfor %}
+	  	{% else %}
+	  		<h1 align="center">No hay registros de Grado. ¡Agrega uno!</h1>
+	  	{% endif %}
+	    </tbody>
+	</table>
+</div>
+</center><br>
+
+			<center>
+		        <a class="btn btn-info" role="button" href="">
+		        <i class="fa fa-fw fa-lg fa-plus-circle"></i>Agregar Grado</a>&nbsp;&nbsp;
+			</center><hr><br>
+
+
+<!-- DATOS DE CURSOS DICTADOS !-->
+
+<h4 style="text-align: center;" id="h3"><p><small><font color="#7E230F"><b><i class="fas fa-chalkboard-teacher"></i> CURSOS DICTADOS <i class="fas fa-chalkboard-teacher"></i></b></font></small></p></h4><p align="right"><button class="btn btn-info"><a href=""><i class="fas fa-cogs"></i> EDITAR </button> <button class="btn btn-success"><a href="{% url 'agregar_detalle_curso' %}"><i class="fas fa-plus-circle"></i> AGREGAR </button> </a></p>
+
+
+<!--CUADRO DE TEXTO CON INFORMACIÓN!-->
+
+  <center>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>!!!</strong> En esta sección encontrarás un listado con todos los <b>cursos</b> que ha dictado este docente registrados en el sistema. Podrás eliminar o actualizar estos registros. ¡Inténtalo!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+
+<!-- TABLA CON CURSOS DICTADOS !-->
+
+<table class="table table-responsive table-bordered">
+    <thead>
+      <tr>
+        <tr>
+          <td bgcolor="#317792"><font color="#ffffff">Curso</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Año</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Semestre</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Paralelo</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Inscritos</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Aprobados</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Reprobados</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Descripción</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Detalle</font></td>
+          <td bgcolor="#317792"><font color="#ffffff">Eliminar</font></td>  
+      </tr>
+    </tr>
+  </thead>
+  <tbody>
+  	{% if detallecurso %}
+	{% for detalle_curso in detallecurso %}
+	<tr>
+		<td>{{ detalle_curso.curso.sigla}} - {{detalle_curso.curso.nombre}}</td>
+		<td><center>{{detalle_curso.anio_cursado}}</center></td>
+		<td><center>{{detalle_curso.semestre}}</center></td>
+		<td><center>{{detalle_curso.paralelo}}</center></td>
+		<td><center>{{detalle_curso.inscritos}}</center></td>
+		<td><center>{{detalle_curso.aprobados}}</center></td>
+		<td><center>{{detalle_curso.rechazados}}</center></td>
+		<td>{{detalle_curso.descripcion}}</td>
+		<td>
+			<button class="btn btn-secondary"><a href=""><i class="far fa-eye"></i> Ver Detalle</button></a></p>
+		</td>
+		<td>
+			<button class="btn btn-danger"><a href="{% url 'eliminar_detallecurso' detalle_curso.pk %}"><i class="fas fa-trash-alt"></i> Eliminar</button></a></p> 
+		</td>
+	</tr>
+	{% endfor %}
+  	{% else %}
+  		<h2 align="center">No hay registros de cursos dictados</h2>
+  	{% endif %}
+  </tbody>
+</table>
+
+
+<style>
+
+.table.table-center {
+  width: auto;
+  margin: 0 auto;
+}
+
+</style>
+{% endblock %}

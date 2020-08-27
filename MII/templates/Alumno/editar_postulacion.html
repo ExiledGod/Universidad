@@ -1,0 +1,117 @@
+{% extends 'Base/base.html' %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+     <legend class="text-center header"><i class="far fa-edit"></i> AGREGAR DATOS DE POSTULACIÓN <i class="far fa-edit"></i></legend>
+            <center>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <strong>¡Bienvenido!</strong> En esta sección puedes agregar los datos de postulación de este alumno al sistema. <br>
+                    Rellena todos los datos y asegúrate de que sean datos válidos.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            </center>
+            <div class="form-group">
+                <label for ="{{ form.fecha_post.fecha_post }}">{{form.fecha_post.label}}</label>
+                {{form.fecha_post}}
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.universidad_procedencia.universidad_procedencia }}">{{form.universidad_procedencia.label}}</label>
+                {{form.universidad_procedencia}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.carrera_procedencia.carrera_procedencia }}">{{form.carrera_procedencia.label}}</label>
+                {{form.carrera_procedencia}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.nivelacion.nivelacion }}">{{form.nivelacion.label}}</label>
+                {{form.nivelacion}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.semestre_ingreso.semestre_ingreso }}">{{form.semestre_ingreso.label}}</label>
+                {{form.semestre_ingreso}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.anio_ingreso.anio_ingreso }}">{{form.anio_ingreso.label}}</label>
+                {{form.anio_ingreso}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.estado_matricula.estado_matricula }}">{{form.estado_matricula.label}}</label>
+                {{form.estado_matricula}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.antecedentes_academicos.antecedentes_academicos }}">{{form.antecedentes_academicos.label}}</label>
+                {{form.antecedentes_academicos}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.antecedentes_profesionales.antecedentes_profesionales }}">{{form.antecedentes_profesionales.label}}</label>
+                {{form.antecedentes_profesionales}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.carta_recomendacion.carta_recomendacion }}">{{form.carta_recomendacion.label}}</label>
+                {{form.carta_recomendacion}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.entrevista.entrevista }}">{{form.entrevista.label}}</label>
+                {{form.entrevista}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.puntaje.puntaje }}">{{form.puntaje.label}}</label>
+                {{form.puntaje}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.resultados_condicion.resultados_condicion }}">{{form.resultados_condicion.label}}</label>
+                {{form.resultados_condicion}}
+            </div>
+        </div>
+    </div>
+    <center>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>¡Atención!</strong> Una vez presiones el botón 'Actualizar', se redireccionará al listado de alumnos con los cambios emitidos.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+    </center>
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <input type="submit" value="Actualizar" class="btn btn-info btn-block">
+            </div>
+        </div> 
+    </div>
+</form>
+</div>
+{% endblock content %}

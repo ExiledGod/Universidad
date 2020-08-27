@@ -1,0 +1,62 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block content%}
+
+
+<!--TÍTULO DE PLANTILLA!-->
+
+<center>
+  <h2>MANTENEDOR CURSOS</h2><p align="right"><button class="btn btn-danger"><a href=""><i class="fas fa-cogs"></i></button></a></p><hr>
+</center>
+
+
+<!--CUADRO DE TEXTO CON INFORMACIÓN!-->
+
+  <center>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>¡Bienvenido!</strong> En esta sección encontrarás mantenedores de funcionalidades para los <b>cursos</b> del sistema <br> Puedes ver, modificar, editar y eliminar toda la información desde este apartado. ¡Inténta seleccionando un apartado!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+
+
+<!--BUSCADOR!-->
+
+
+<div>
+  <h4><font color="#1C2852"><i class="fas fa-search"></i> Búsqueda</i></h4></font>
+
+  <form action="" method="GET">
+  	{% csrf_token %}
+    <label for="q">Ingrese nombre del curso : </label>
+    <input type="text" name="q" value="{{ query|escape }}">
+    <button class="btn btn-info" type="submit" value="Buscar"><i class="fas fa-search"></i></button>
+  </form>
+    <br>
+    <li><b>Además, puedes realizar tu búsqueda con la sigla o los créditos <font color="#C4B521"> <i class="fas fa-exclamation-triangle"></i></font></b></li>
+</div>
+
+
+<div>
+  {% if query %}
+      <hr>
+    <br>
+    <h4><font color="#316620"><i class="fas fa-info-circle"></font></i> Resultado para "{{ query|escape }}"  <font color="#316620"><i class="fas fa-info-circle"></i></font></h4>
+
+    {% if results %}
+      <ul>
+      {% for cursos in results %}
+        <li><a href="{% url 'cursos_home' cursos.pk %}">{{ cursos|escape }}</a> <i class="fas fa-user-tie"></i></l1>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p><font color="#A61C1C"><b> <i class="fas fa-exclamation-triangle"></i> No se encontraron registros en la base de datos con el dato ingresado. ¡Inténtalo de nuevo! <i class="fas fa-exclamation-triangle"></i></b></p></font>
+    {% endif %}
+  {% endif %}
+
+</div>
+{% endblock %}

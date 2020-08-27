@@ -1,0 +1,55 @@
+{% extends 'Base/base.html'%} {% block content %}
+
+<div>
+    {% csrf_token %}
+    <div class="row justify-content-md-center">
+
+        <div class="col-md-auto">
+            <label>Titulo:</label>
+            <br>
+            <h5>{{ object.titulo}}</h5>
+            <br>
+            <label>Descripción:</label>
+            <br>
+            <h5>{{ object.descripcion}}</h5>
+            <br>
+            <label>Usuario:</label>
+            <h5>{{ object.usuario}}</h5>
+            <br>
+            <label>Tipo:</label>
+            <h5>{{ object.tipoTarea}}</h5>
+            <br>
+            <label>Estado:</label>
+            <h5>{{ object.estadoTarea}}</h5>
+            <br>
+            <label>Fecha de Inicio:</label>
+            <h5>{{ object.fechaInicio}}</h5>
+            <br>
+            <label>Fecha de Término:</label>
+            <h5>{{ object.fechaTermino}}</h5>
+            <br>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<div>
+    <div class="row justify-content-md-center">
+
+        <div class="col-md-auto">
+            <a href="{% url 'editar_tarea' object.id %}">
+                <button type="button" class="btn btn-primary" name="button">
+                    Editar
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock content %}

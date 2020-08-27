@@ -1,0 +1,50 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+	{% if curso %}
+	<center>
+		<h4 class="page-header" id="perfilHeader">DETALLE DE CURSO DICTADO </h4><p align="right"><button class="btn btn-danger"><a href=""><i class="fas fa-trash-alt"></i> ELIMINAR DETALLE</button></a></p><hr>
+</center>
+	</center>
+	<center>
+	<div class="alert alert-primary alert-dismissible fade show" role="alert">
+			<strong>¡Bienvenido!</strong> En esta sección encontrarás el detalle del curso que haz seleccionado.<br> Recuerda que en la página anterior puedes generar un reporte de esta información en el apartado de Acciones 'Generar Reporte'
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	</center>
+	<br>
+	<div>
+		<hr>
+<div>
+	<h4 style="text-align: center;" id="h3"><p><small><font color="#132B34"><b><i class="fas fa-info-circle"></i> Descripción general <i class="fas fa-info-circle"></i></b></font></small></p></h4>
+			<p><b>Comentarios</b>: {{ curso.descripcion }} </p>
+	</div>
+	<div>
+		<hr>
+			<h5> <b>Profesor a cargo</b></h5><h6>{{ curso.profesor }} </h6>
+	</div>
+	<div>
+		<hr>
+		<h6> <b>Nombre Curso: </b>{{ curso.curso.nombre }}</h6>
+		<h6> <b>Sigla: </b>{{ curso.curso.sigla }}</h6>
+		<h6> <b>Créditos: </b>{{ curso.curso.creditos }}</h6>
+		<h6> <b>Tipo Curso: </b>{{ curso.curso.tipo }}</h6>
+		<hr>
+		<h6> <b>Año: </b>{{ curso.anio_cursado }}</h6>
+		<h6> <b>Semestre: </b>{{ curso.semestre }}</h6>
+		<h6> <b>Paralelo: </b>{{ curso.paralelo }}</h6>
+		<h6> <b>Inscritos: </b>{{ curso.inscritos }}</h6>
+		<h6> <b>Aprobados: </b>{{ curso.aprobados }}</h6>
+		<h6> <b>Rechazados: </b>{{ curso.rechazados }}</h6>
+	</div>
+	<div>
+		<hr>
+	</div>
+	{% endif %}
+
+
+
+{% endblock %}

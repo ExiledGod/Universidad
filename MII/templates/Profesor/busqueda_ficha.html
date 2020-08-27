@@ -1,0 +1,64 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<!--TÍTULO DE PLANTILLA!-->
+
+<center>
+  <h2>FICHAS DOCENTES</h2><p align="right"><button class="btn btn-info"><a href=""><i class="far fa-address-book"></i> Fichas</button></a></p><hr>
+</center>
+
+
+<!--CUADRO DE TEXTO CON INFORMACIÓN!-->
+
+  <center>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>¡Bienvenido!</strong> En esta sección encontrarás un buscador por rut, nombre o email del docente que deseas encontrar <br> Podrás ver la ficha docente pinchando en el nombre del docente. ¡Inténtalo!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+
+<head>
+    <title>Búsqueda{% if query %} Resultados{% endif %}</title>
+</head>
+<body>
+
+<div>
+  <h4><font color="#1C2852"><i class="fas fa-search"></i> Búsqueda</i></h4></font>
+
+  <form action="" method="GET">
+  	{% csrf_token %}
+    <label for="q">Ingrese rut del docente (sin puntos y guión) : </label>
+    <input type="text" name="q" value="{{ query|escape }}">
+    <button class="btn btn-info" type="submit" value="Buscar"><i class="fas fa-search"></i></button>
+  </form>
+    <br>
+    <li><b>Además, puedes realizar tu búsqueda con el nombre del docente o su email <font color="#C4B521"> <i class="fas fa-exclamation-triangle"></i></font></b></li>
+</div>
+
+
+<div>
+  {% if query %}
+      <hr>
+    <br>
+    <h4><font color="#316620"><i class="fas fa-info-circle"></font></i> Resultado para "{{ query|escape }}"  <font color="#316620"><i class="fas fa-info-circle"></i></font></h4>
+
+    {% if results %}
+      <ul>
+      {% for profesor in results %}
+        <li><a href="{% url 'ficha_docente' profesor.pk %}">{{ profesor|escape }}</a> <i class="fas fa-user-tie"></i></l1>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p><font color="#A61C1C"><b> <i class="fas fa-exclamation-triangle"></i> No se encontraron registros en la base de datos con el dato ingresado. ¡Inténtalo de nuevo! <i class="fas fa-exclamation-triangle"></i></b></p></font>
+    {% endif %}
+  {% endif %}
+
+</div>
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<!--TÍTULO DE PLANTILLA!-->
+{% for alumno in alumno%}
+<center>
+  <h2>MANTENEDOR ALUMNO</h2><p align="right"><button class="btn btn-danger"><a href="{% url 'eliminar_alumno' alumno.pk %}"><i class="fas fa-trash-alt"></i> ELIMINAR ALUMNO </button></a></p><hr>
+</center>
+{% endfor %}
+
+<!-- INFORMACIÓN BÁSICA DEL ALUMNO !-->
+
+<div>
+	<h4 style="text-align: center;" id="h3"><p><small><font color="#132B34"><b><i class="fas fa-info-circle"></i> Información básica <i class="fas fa-info-circle"></i></b></font></small></p></h4>
+		<div>
+			<hr>
+				{% for alumno in alumno%}
+					<h6 id="usuario"> <font color="#203A43"><b>Nombre <i class="fas fa-user-friends"></i>:</b> </font>{{ alumno.nombre}} {{alumno.apellido_pat}} {{alumno.apellido_mat}} </h6>
+					<h6 id="usuario"><font color="#203A43"> <b>Rut <i class="far fa-address-card"></i>: </font></b> {{ alumno.rut }}</h6>
+					<h6 id="usuario"><font color="#203A43"> <b>E-mail <i class="far fa-envelope"></i>:</font></b> {{ alumno.mail }}</h6>
+					<h6 id="usuario"><font color="#203A43"> <b>Teléfono <i class="fas fa-phone"></i>:</font></b>  {{ alumno.telefono }}</h6>
+			<hr>
+				{% endfor %}
+		</div>
+</div>
+
+<!-- DATOS DE DIRECCIÓN !-->
+
+<div>
+	<h4 style="text-align: center;" id="h3"><p><small><font color="#265135"><b><i class="fas fa-map-marker-alt"></i> Dirección Permanente <i class="fas fa-map-marker-alt"></i></b></font></small></p></h4><p align="right"><button class="btn btn-info"><a href=""><i class="fas fa-cogs"></i> EDITAR </button></a></p>
+
+		<div>
+			<hr>
+				{% if direccion %}
+				{% for direccionalumno in direccion %}
+					<h6><font color="#265135"><b> Región <i class="fas fa-globe-americas"></i>: </b>{{ direccionalumno.region.nombre }}</h6>
+					<h6><font color="#265135"><b> Provincia <i class="fas fa-globe-americas"></i>: </b>{{ direccionalumno.provincia.nombre }}</h6>
+					<h6><font color="#265135"><b> Comuna <i class="far fa-building"></i>: </b>{{ direccionalumno.comuna.nombre }}</h6>
+					<h6><font color="#265135"><b> Dirección <i class="fas fa-home"></i>: </b>{{ direccionalumno.direccion }}</h6>
+			<hr>
+				{% endfor %}
+				{% else %}
+				<center><h4><font color="#265135"><b>NO REGISTRA DATOS</b></font></h4></center><br>
+					<center>
+                    	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        	<strong>¡ATENCIÓN!</strong> No se tiene registro de datos del alumno seleccionado. Apreta el botón <b>Agregar dirección</b> para agregar datos.
+                    		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        		<span aria-hidden="true">&times;</span>
+                    		</button>
+                    	</div>
+                	</center>
+					<p align="center"><button class="btn btn-success"><a href="{% url 'crear_direccion_alumno' %}"><i class="fas fa-plus-circle"></i> AGREGAR DIRECCIÓN </button></a></p>
+				{% endif %}
+		</div>
+</div>
+
+<!-- DATOS DE POSTULCIÓN !-->
+
+
+<div>
+	<hr><br><h4 style="text-align: center;" id="h3"><p><small><font color="#21395A"><b><i class="fas fa-book"></i> Datos de Postulación <i class="fas fa-book"></i></b></font></small></p></h4><p align="right"><button class="btn btn-info"><a href=""><i class="fas fa-cogs"></i> EDITAR</button></a></p>
+
+		{% if postulacion %}
+		{% for postulacion in postulacion %}
+			<div>
+				<hr>
+					<h6><font color="#21395A"><b>Fecha Postulación <i class="far fa-calendar-check"></i>: </b></font>{{ postulacion.fecha_post}}</h6>
+					<h6><font color="#21395A"><b>Universiad de Procedencia <i class="fas fa-university"></i>: </b></font>{{ postulacion.universidad_procedencia }} </h6>
+					<h6><font color="#21395A"><b>Carrera de Procedencia <i class="fas fa-graduation-cap"></i>: </b></font>{{ postulacion.carrera_procedencia }}</h6>
+					<h6><font color="#21395A"><b>Estado de Nivelación <i class="fas fa-user-check"></i>: </b></font>{{ postulacion.nivelacion }} </h6>
+					<h6><font color="#21395A"><b>Semestre de ingreso <i class="far fa-calendar-check"></i>: </b></font>{{ postulacion.semestre_ingreso}} </h6>
+					<h6><font color="#21395A"><b>Año de ingreso <i class="far fa-calendar-check"></i>: </b></font>{{ postulacion.anio_ingreso }}</h6>
+					<h6><font color="#21395A"><b>Estado de Matrícula <i class="far fa-address-book"></i>: </b></font>{{ postulacion.estado_matricula }} </h6>
+					<h6><font color="#21395A"><b>Antecedentes Académicos <i class="far fa-address-book"></i>: </b></font>{{ postulacion.antecedentes_academicos }} </h6>
+					<h6><font color="#21395A"><b>Antecedentes Profesionales <i class="far fa-address-book"></i>: </b></font>{{ postulacion.antecedentes_profesionales }} </h6>
+					<h6><font color="#21395A"><b>Carta de Recomendación <i class="far fa-envelope"></i>: </b></font>{{ postulacion.carta_recomendacion }} </h6>
+					<h6><font color="#21395A"><b>Entrevista <i class="fas fa-user-friends"></i>: </b></font>{{ postulacion.entrevista }} </h6>
+					<h6><font color="#21395A"><b>Puntaje Entrevista <i class="fas fa-hand-point-up"></i>: </b></font>{{ postulacion.puntaje }} </h6>
+					<h6><font color="#21395A"><b>Resultados de la condición <i class="fas fa-poll"></i>: </b></font>{{ postulacion.resultados_condicion }} </h6>
+			</div>
+
+		{% endfor %}
+		{% else %}
+
+      		<hr><br><center><p><font color="#A61C1C"><b> <i class="fas fa-exclamation-triangle"></i> No se encontraron registros en la base de datos. Ingresa los datos de Postulación.<i class="fas fa-exclamation-triangle"></i></b></p></font></center>
+
+				{% for alumno in alumno%}
+					<center>
+	                    <a class="btn btn-success" role="button" href="{% url 'agregar_datos_postulacion' pk=alumno.pk %}">
+	                    <i class="fa fa-fw fa-lg fa-plus-circle"></i>Agregar</a>&nbsp;&nbsp;
+					</center>
+				{% endfor %}
+				{% endif %}
+</div>
+
+
+<!-- DATOS DE BECAS !-->
+
+<div>
+	{% if alumno %}
+	{% for alumno in alumno %}
+	<hr><br><h4 style="text-align: center;" id="h3"><p><small><font color="#265135"><b><i class="fas fa-money-bill-wave"></i> Datos de Becas <i class="fas fa-money-bill-wave"></i></b></font></small></p></h4><p align="right"><button class="btn btn-info"><a href="{% url 'agregar_beca' pk=alumno.pk %}"><i class="fas fa-cogs"></i> AGREGA UNA BECA</button></a></p>
+
+
+		<div>
+			<hr>
+				<h6><font color="#265135"><b>Nombre Beca: </b></font>{{ alumno.becas.nombre}}</h6>
+				<h6><font color="#265135"><b>Monto en UF: </b></font>{{ alumno.becas.monto}}</h6>
+				<h6><font color="#265135"><b>Tipo de Beca: </b></font>{{ alumno.becas.tipo}}</h6>
+		</div>
+	{% endfor %}
+	{% else %}
+
+      	<hr><br><center><p><font color="#A61C1C"><b> <i class="fas fa-exclamation-triangle"></i> No se encontraron registros de becas asociadas al Alumno en la base de datos <i class="fas fa-exclamation-triangle"></i></b></p></font></center>
+
+			{% for alumno in alumno%}
+				<center>
+	                   <a class="btn btn-success" role="button" href="{% url 'crear_beca' pk=alumno.pk %}">
+	                   <i class="fa fa-fw fa-lg fa-plus-circle"></i>Agregar</a>&nbsp;&nbsp;
+				</center>
+			{% endfor %}
+			{% endif %}
+</div>
+
+{% endblock %}

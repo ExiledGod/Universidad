@@ -1,0 +1,58 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<!--TÍTULO DE PLANTILLA!-->
+
+<center>
+  <h2>DEUDAS</h2><p align="right"><button class="btn btn-danger"><a href=""><i class="fas fa-cogs"></i></button></a></p><hr>
+</center>
+
+
+  <center>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>¡Bienvenido!</strong> En esta sección encontrarás todas las deudas del alumno que has buscado. <br> Podrás ver el detalle de todas las deudas pinchando en el nombre del alumno. ¡Inténtalo!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+
+
+<head>
+    <title> {% if query %} Resultados{% endif %}</title>
+</head>
+<body>
+
+
+<div>
+  <h4><font color="#1C2852"><i class="fas fa-search"></i> Búsqueda</i></h4></font>
+
+    <form action="" method="GET">
+      {% csrf_token %}
+      <label for="q">Ingrese rut del alumno (sin puntos y guión) : </label>
+      <input type="text" name="q" value="{{ query|escape }}">
+      <button class="btn btn-info" type="submit" value="Buscar"><i class="fas fa-search"></i></button>
+    </form>
+    <br>
+    <li><b>Además, puedes realizar tu búsqueda con el nombre del alumno o su email <font color="#C4B521"> <i class="fas fa-exclamation-triangle"></i></font></b></li>
+</div>
+
+<hr>
+
+  {% if query %}
+      <h4><font color="#316620"><i class="fas fa-info-circle"></font></i> Resultado para "{{ query|escape }}"  <font color="#316620"><i class="fas fa-info-circle"></i></font></h4>
+
+    {% if results %}
+      <ul>
+      {% for alumno in results %}
+        <li><a href="{% url 'deudas_alumno' alumno.pk %}">{{ alumno|escape }}</a><i class="fas fa-graduation-cap"></i></l1>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p><font color="#A61C1C"><b> <i class="fas fa-exclamation-triangle"></i> No se encontraron registros en la base de datos con el dato ingresado. ¡Inténtalo de nuevo! <i class="fas fa-exclamation-triangle"></i></b></p></font>    {% endif %}
+  {% endif %}
+</body>
+</html>
+
+{% endblock %}

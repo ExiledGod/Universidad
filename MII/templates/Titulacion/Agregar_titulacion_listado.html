@@ -1,0 +1,65 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+{% load bootstrap4 %}
+
+<center>
+	<h2>LISTADO DE ALUMNOS EN SEMINARIO DE TESIS FINALIZADO</h2><hr>
+</center>
+
+<!--CUADRO DE TEXTO CON INFORMACIÓN!-->
+
+  <center>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>¡Bienvenido al listado de alumnos con seminario finalizado!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+
+  <!--A CONTINUACION SE  PONDRA EL LISTADO !-->
+
+<table id="tablaAlumnos" class="table table-responsive table-bordered">
+	<thead>
+		<tr>
+			<td colspan="5" align="center" width="10" height="10" bgcolor="#1F618D"><font color="#ffffff"><b>Datos Alumno</b></font></td>
+			<td colspan="3" align="center" width="10" height="10" bgcolor="#1F618D"><font color="#ffffff"><b>Acciones</b></font></td>
+			<tr>
+				<td bgcolor="#317792"><font color="#ffffff">Rut</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Nombres</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Apellido Paterno</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Apellido Materno</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Correo Electronico</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Estado</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Asignatura</font></td>
+				<td bgcolor="#317792"><font color="#ffffff">Selecion</font></td>
+			</tr>
+		</tr>
+	</thead>
+	<tbody>
+	{% if object_list %}
+	
+	{% for avancecurricular in object_list %}
+	{% ifequal avancecurricular.estado 'Aprobado' %}
+	
+	<tr>
+		<td>{{ avancecurricular.alumno.rut }}</td>
+		<td>{{ avancecurricular.alumno.nombre }}</td>
+		<td>{{ avancecurricular.alumno.apellido_pat }}</td>
+		<td>{{ avancecurricular.alumno.apellido_mat }}</td>
+		<td>{{ avancecurricular.alumno.mail }}</td>
+		<td>{{ avancecurricular.estado}}</td>
+		<td></td>
+		<td>hola</td>
+	</tr>
+
+
+	{% endifequal %}
+	{% endfor %}
+	{% else %}
+	<h1 align="center">No hay registros de Alumnos</h1>
+	{% endif %}
+	</tbody>
+</table>
+{% endblock %}

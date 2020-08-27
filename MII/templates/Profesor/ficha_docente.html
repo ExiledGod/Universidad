@@ -1,0 +1,119 @@
+{% extends 'Base/base.html'%}
+{% block content %} 
+
+<form method="post">
+	{% csrf_token %}
+	<div>
+		<div class="form-group">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>
+                <div class="alert alert-success"> {{ message }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+<!--TÍTULO DE PLANTILLA!-->
+
+<center>
+  <h2>FICHA DOCENTE</h2><p align="right"><button class="btn btn-danger"><a href=""><i class="fas fa-cogs"></i></button></a></p><hr>
+</center>
+
+<!--CUADRO DE TEXTO CON INFORMACIÓN!-->
+
+  <center>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>¡Bienvenido!</strong> En esta sección encontrarás la ficha docente.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+
+
+<!-- INFORMACIÓN BÁSICA DEL DOCENTE !-->
+
+<div>
+	<h4 style="text-align: center;" id="h3"><p><small><font color="#132B34"><b><i class="fas fa-info-circle"></i> Información básica <i class="fas fa-info-circle"></i></b></font></small></p></h4>
+		<div>
+			<hr>
+				{% for profesor in profesor %}
+					<h6 id="usuario"> <font color="#203A43"><b>Nombre <i class="fas fa-user-friends"></i>:</b> </font>{{ profesor.nombre}} {{profesor.apellido_pat}} {{alumno.apellido_mat}} </h6>
+					<h6 id="usuario"><font color="#203A43"> <b>Rut <i class="far fa-address-card"></i>: </font></b> {{ profesor.rut }}</h6>
+					<h6 id="usuario"><font color="#203A43"> <b>E-mail <i class="far fa-envelope"></i>:</font></b> {{ profesor.mail }}</h6>
+					<h6 id="usuario"><font color="#203A43"> <b>Teléfono <i class="fas fa-phone"></i>:</font></b>  {{ profesor.telefono }}</h6>
+			<hr>
+				{% endfor %}
+		</div>
+</div>
+
+
+<!-- DATOS DE DIRECCIÓN !-->
+
+<div>
+	<h4 style="text-align: center;" id="h3"><p><small><font color="#265135"><b><i class="fas fa-map-marker-alt"></i> Dirección Permanente <i class="fas fa-map-marker-alt"></i></b></font></small></p></h4><p align="right"><button class="btn btn-info"><a href=""><i class="fas fa-cogs"></i> EDITAR </button></a></p>
+
+		<div>
+			<hr>
+				{% for direccionprofesor in direccion %}
+					<h6><font color="#265135"><b> Región <i class="fas fa-globe-americas"></i>: </b>{{ direccionprofesor.region.nombre }}</h6>
+					<h6><font color="#265135"><b> Provincia <i class="fas fa-globe-americas"></i>: </b>{{ direccionprofesor.provincia.nombre }}</h6>
+					<h6><font color="#265135"><b> Comuna <i class="far fa-building"></i>: </b>{{ direccionprofesor.comuna.nombre }}</h6>
+					<h6><font color="#265135"><b> Dirección <i class="fas fa-home"></i>: </b>{{ direccionprofesor.direccion }}</h6>
+			<hr>
+				{% endfor %}
+		</div>
+</div>
+
+
+<!-- DATOS DE GRADO !-->
+
+<div>
+	<h4 style="text-align: center;" id="h3"><p><small><font color="#21395A"><b><i class="fas fa-book"></i> Datos de Grados <i class="fas fa-book"></i></b></font></small></p></h4><p align="right"><button class="btn btn-info"><a href=""><i class="fas fa-cogs"></i> EDITAR</button></a></p>
+
+<center>
+<div class="col-md-12 tableCenter">
+	<table id="tablaGrado" class="table table-responsive table-hover" style="margin: 0 auto;">
+	    <thead>
+	      	<tr>
+	        	<tr>
+			        <td bgcolor="#317792" width="22%"><font color="#ffffff">Tipo de Grado</font></td>
+			         <td bgcolor="#317792" width="22%"><font color="#ffffff">Institución de Obtención</font></td>
+			         <td bgcolor="#317792" width="22%"><font color="#ffffff">Nombre Grado</font></td>
+			         <td bgcolor="#317792" width="22%"><font color="#ffffff">Año de Obtención</font></td>
+	      		</tr>
+	    	</tr>
+	    </thead>
+	    <tbody>
+	  		{% if grado %}
+			{% for tipogrado in grado %}
+				<tr>
+					<td width="22%">{{ tipogrado.nombre_tipo}} </td>
+					<td width="22%">{{ tipogrado.institucion }}</td>
+					<td width="22%">{{ tipogrado.nombre}} </td>
+					<td width="22%"><center>{{ tipogrado.anio_obtencion }}</center></td>
+				</tr>
+		{% endfor %}
+	  	{% else %}
+	  		<h1 align="center">No hay registros de Grado. ¡Agrega uno!</h1>
+	  	{% endif %}
+	    </tbody>
+	</table>
+</div>
+</center><br>
+
+			<center>
+		        <a class="btn btn-info" role="button" href="">
+		        <i class="fa fa-fw fa-lg fa-plus-circle"></i>Agregar Grado</a>&nbsp;&nbsp;
+			</center><hr><br>
+	<div>
+</div>
+</div>
+</form>
+
+
+
+
+{% endblock %}

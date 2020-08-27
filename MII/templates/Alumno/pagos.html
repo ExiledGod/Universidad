@@ -1,0 +1,82 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<center>
+	<h1>DETALLE DE PAGOS</h1><hr>
+</center>
+
+<h5>Alumno <i class="fas fa-graduation-cap"></i></h5>
+
+{% for alumno in alumno %}
+	<h6>{{ alumno.nombre }} {{ alumno.apellido_pat}} {{ alumno.apellido_mat}}</h6>
+	<h6>{{ alumno.rut }}</h6>
+{% endfor %}
+<hr>
+<br>
+
+<center>
+	<table id="tablaAlumnos" class="table table-responsive table-bordered">
+		<thead>
+			<tr>
+				<tr>
+					<td bgcolor="#1F618D"><font color="#ffffff">Número de Pago</font></td>
+					<td bgcolor="#1F618D"><font color="#ffffff">Fecha de Pago</font></td>
+					<td bgcolor="#1F618D"><font color="#ffffff">Monto Pagado</font></td>
+					<td bgcolor="#1F618D"><font color="#ffffff">Tipo Pago</font></td>
+					<td bgcolor="#1F618D"><font color="#ffffff">Banco</font></td>
+					<td bgcolor="#1F618D"><font color="#ffffff">Acción</font></td>
+				</tr>
+			</tr>
+		</thead>
+		<tbody>
+		{% if pagos %}
+		{% for pagos in pagos %}
+		<tr>
+			<td>{{pagos.id_pago}}</td>
+			<td>{{pagos.fecha_pag}}</td>
+			<td>{{pagos.monto}}</td>
+			<td>{{pagos.tipo_pago}}</td>
+			<td>{{pagos.banco}}</td>
+			<td>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modalpago"><i class="fas fa-print"></i> 
+					 Imprimir
+				</button>
+				<div class="modal fade" id="Modalpago" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  			<div class="modal-dialog" role="document">
+		    			<div class="modal-content">
+		     				<div class="modal-header">
+		       					<center>
+		       						<h5 class="modal-title" id="exampleModalLabel" align="justify">Imprimir Comprobante para <br>
+		       							{% if alumno %}
+		       							<b>{{alumno.nombre}} {{alumno.apellido_pat}} {{alumno.apellido_mat}}</b>
+		       							{% endif %}
+		       						</h5>
+		       					</center>
+		       					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          					<span aria-hidden="true">&times;</span>
+		        				</button>
+		      				</div>
+		      			<div class="modal-body">
+		       				A continuación, se descargará un archivo en formato PDF que contiene la información del detalle de pago de la cuota seleccionada. <br><br>
+		        			Apreta el botón 'Generar' para comenzar la descarga.
+		      			</div>
+			      			<div class="modal-footer">
+			        			<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+			        			<button type="button" class="btn btn-success">Generar</button>
+			      			</div>
+		    			</div>
+		  			</div>
+		  		</div>
+			</td>
+		</tr>
+		{% endfor %}
+		{% else %}
+		<h1 align="center">No hay registros de Alumnos</h1>
+		{% endif %}
+		</tbody>
+	</table>
+</center>
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<!--TÍTULO DE PLANTILLA!-->
+
+<center>
+  <h2>ELIMINAR ALUMNO</h2><hr>
+</center>
+
+<!--MENSAJE MOVIBLVE !-->
+
+<center>
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<strong>¡ATENCIÓN!</strong> Si seleccionas el botón Aceptar, eliminarás completamente este registro de la base de datos. <br> En caso contrario, sólo cancela la operación
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			   <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+</center>
+
+<center>
+	<div>
+		<form method="post">
+			{% csrf_token %}
+			<h4> ¿Desea eliminar el Alumno <font color="#265135"> {{object}}?<i class="fas fa-user-friends"></i></font></h4>	
+		</br>
+			<button class="btn btn-danger" onclick="alert('Se ha eliminado correctamente')"type="submit">Aceptar</button>
+			<a class= "btn btn-secondary" href="{% url 'alumnos_home' alumno.pk %}">Cancelar</a>
+		</form>
+	</div>
+</center>
+{% endblock content %}

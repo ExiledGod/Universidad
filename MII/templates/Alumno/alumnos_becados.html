@@ -1,0 +1,70 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<center>
+	<h2>LISTADO DE ALUMNOS BECADOS</h2><hr>
+</center>
+
+<table class="table table-responsive table-bordered">
+	<thead>
+		<tr>
+			<tr>
+				<td bgcolor="#1F618D"><font color="#ffffff">Rut</font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff">Nombres</font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff">Apellido Paterno</font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff">Apellido Materno</font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff">Fecha Nacimiento</font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff">Beca</font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff">Monto</font></td>
+				<td bgcolor="#1F618D"><font color="#ffffff">Ver detalle</font></td>
+			</tr>
+		</tr>
+	</thead>
+	<tbody>
+	{% if object_list %}
+	{% for alumno in object_list %}
+	<tr>
+		<td><a href=""><u>{{ alumno.rut }}</u></a></td>
+		<td>{{ alumno.nombre }}</td>
+		<td>{{ alumno.apellido_pat }}</td>
+		<td>{{ alumno.apellido_mat }}</td>
+		<td>{{ alumno.fecha_nac }}</td>
+		<td></td>
+		<td></td>
+		<td>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalBecados"><i class="far fa-eye"></i> 
+					 Ver Detalle
+				</button>
+				<div class="modal fade" id="ModalBecados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  			<div class="modal-dialog" role="document">
+		    			<div class="modal-content">
+		     				<div class="modal-header">
+		       					<center>
+		       						<h5 class="modal-title" id="exampleModalLabel" align="justify">Ver Detalle de Beca<br></h5>
+		       					</center>
+		       					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          					<span aria-hidden="true">&times;</span>
+		        				</button>
+		      				</div>
+		      			<div class="modal-body">
+		       				A continuación, se descargará un archivo en formato PDF que contiene la información del detalle de beca del alumno seleccionado. <br><br>
+		        			Apreta el botón 'Generar' para comenzar la descarga.
+		      			</div>
+			      			<div class="modal-footer">
+			        			<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+			        			<button type="button" class="btn btn-success">Generar</button>
+			      			</div>
+		    			</div>
+		  			</div>
+		  		</div>
+			</td>
+	</tr>
+	{% endfor %}
+	{% else %}
+	<h1 align="center">No hay registros de Alumnos</h1>
+	{% endif %}
+	</tbody>
+</table>
+
+{% endblock %}

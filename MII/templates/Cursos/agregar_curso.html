@@ -1,0 +1,82 @@
+{% extends 'Base/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="form-group">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>
+                <div class="alert alert-success"> {{ message }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row justify-content-md-center">
+            <div class="col-md-8 col-md-offset-2">
+                <legend class="text-center header"><i class="far fa-edit"></i> REGISTRO CURSO <i class="far fa-edit"></i></legend>
+                <center>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>¡Bienvenido!</strong> En esta sección puedes agregar un curso al sistema.
+                        Rellena todos los datos y asegúrate de que sean datos válidos.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                </center>
+
+                <div class="form-group">
+                    <label for ="{{ form.nombre.nombre }}">{{form.nombre.label}}</label>
+                    {{form.nombre}}
+                </div>
+            </div>
+
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label for ="{{ form.sigla.sigla }}">{{form.sigla.label}}</label>
+                    {{form.sigla}}
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label for ="{{ form.creditos.creditos }}">{{form.creditos.label}}</label>
+                    {{form.creditos}}
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label for ="{{ form.tipo.tipo }}">{{form.tipo.label}}</label>
+                    {{form.tipo}}
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label for ="{{ form.curso_en_malla.curso_en_malla }}">{{form.curso_en_malla.label}}</label>
+                    {{form.curso_en_malla}}
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label for ="{{ form.descripcion.descripcion }}">{{form.descripcion.label}}</label>
+                    {{form.descripcion}}
+                </div>
+            </div>
+        </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <input type="submit" value="Guardar" class="btn btn-primary btn-block">
+                    </div>
+                </div> 
+            </div>
+    </form>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block content%}
+
+
+<!--TÍTULO DE PLANTILLA!-->
+
+<center>
+  <h2>PÁGINA PRINCIPAL MANTENEDORES</h2><p align="right"><button class="btn btn-danger"><a href=""><i class="fas fa-cogs"></i></button></a></p><hr>
+</center>
+
+<!--CUADRO DE TEXTO CON INFORMACIÓN!-->
+
+  <center>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>¡Bienvenido!</strong> En esta sección encontrarás mantenedores de funcionalidades para los <b>alumnos, docentes y cursos </b> del sistema. Puedes ver, modificar, editar y eliminar toda la información desde este apartado. ¡Inténta seleccionando un apartado!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+
+
+<h3> Mantenedor Alumno </h3>
+<h5><font color="#1C2852"><a href="{% url 'mantenedor_alumno' %}"  title="Selecciona para ir a Mantenedor"> Ir a Alumnos &nbsp; <i class="fas fa-user-graduate"></i></a></font></i></h5>
+<h6><font color="#1C2852"><a href="{% url 'registroAlumno' %}"  title="Selecciona para ir a Mantenedor"> REGISTRAR ALUMNO &nbsp; <i class="fas fa-user-graduate"></i></a></font></i></h6>
+
+<hr><br>
+
+<h3> Mantenedor Docente </h3>
+<h5><font color="#0E1F34"><a href="{% url 'mantenedor_docente' %}"  title="Selecciona para ir a Mantenedor"> Ir a Docentes &nbsp; <i class="fas fa-users-cog"></i></a></font></h5>
+<h6><font color="#0E1F34"><a href="{% url 'registroProfesor' %}"  title="Selecciona para ir a Mantenedor"> REGISTRAR DOCENTE &nbsp; <i class="fas fa-users-cog"></i></a></font></h6>
+
+<hr><br>
+
+<h3> Mantenedor Cursos</h3>
+<h5><font color="#34110E"><a href="{% url 'mantenedor_curso' %}" title="Selecciona para ir a Mantenedor"> Ir a Cursos &nbsp; <i class="far fa-file-alt"></i></a></font></h5>
+<h6><font color="#34110E"><a href="{% url 'registroCurso' %}" title="Selecciona para ir a Mantenedor"> REGISTRAR CURSO &nbsp; <i class="far fa-file-alt"></i></a></font></h6>
+
+
+{% endblock %}

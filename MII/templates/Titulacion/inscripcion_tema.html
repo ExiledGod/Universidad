@@ -1,0 +1,47 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+{% load bootstrap4 %}
+
+<!-- FORMULARIO DE CREACIÓN DE TITULACIÓN!-->
+<form method="post">
+    {% csrf_token %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+     <legend class="text-center header"><i class="far fa-edit"></i> INSCRIPCIÓN TEMA <i class="far fa-edit"></i></legend>
+  				<center>
+    				<div class="alert alert-primary alert-dismissible fade show" role="alert">
+        				<strong>¡Bienvenido!</strong> Selecciona un alumno, su profesor guía y el nombre del tema.
+      						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          						<span aria-hidden="true">&times;</span>
+      						</button>
+    				</div>
+  				</center>
+            <div class="form-group">
+                <label for ="{{ form.alumno.alumno }}">{{form.alumno.label}}</label>
+                {{form.alumno}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.profesor.profesor }}">{{form.profesor.label}}</label>
+                {{form.profesor}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.nombre_tema.nombre_tema }}">{{form.nombre_tema.label}}</label>
+                {{form.nombre_tema}}
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <input type="submit" value="Agregar" class="btn btn-primary btn-block">
+            </div>
+        </div> 
+    </div>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<center>
+	<h2>INFORMACIÓN SOBRE BECAS</h2><p align="right"><button class="btn btn-info"><a href="{% url 'alumnos_becados' %}">Alumnos Becados</button></a></p><hr>
+</center>
+
+
+<h3> I. Beneficios de Arancel</h3>
+<h5><font color="#1C2852"><i class="fas fa-user-graduate"></i> 1. Beca continuidad de estudios <i class="fas fa-user-graduate"></font></i></h5>
+
+<center>
+	<p align="justify">Este beneficio está dirigido a estudiantes de pregrado de la Escuela de Ingeniería Informática de La Pontificia Universidad Católica de Valparaíso y consiste en una rebaja del 50% del arancel total del programa.</p>
+</center>
+
+<h5><font color="#682F27"><i class="fas fa-exclamation-circle"></i> Requisitos <i class="fas fa-exclamation-circle"></i></font></h5>
+
+<p align="justify">Los requisitos para poder obtener la beca son los siguientes:</p>
+	<li>No superar un año de egreso.</li>
+	<li>Estar aceptado en el programa de magíster.</li>
+	<li>Estar en condiciones de aprobar y cumplir los requisitos para ingresar al magíster dentro de un año a contar de la fecha de matrícula en el programa de magíster. Los requisitos son:<br>
+		<b>El examen de título de pregrado para Ingeniería de Ejecución en Informática</b> y <b>obtención de licenciatura para Ingeniería Civil Informática</b>
+	</li>
+
+<br>
+<br>
+
+<h5><font color="#1C2852"><i class="fas fa-graduation-cap"></i> 2. Premio al estudiante destacado <i class="fas fa-graduation-cap"></font></i></h5>
+<p align="justify">Este beneficio está dirigido a los cuatro mejores estudiantes de una promoción de una carrera de pregrado de la Escuela de Ingeniería Informática de La Pontificia Universidad Católica de Valparaíso. La distribución de este beneficio depende del ranking del estudiante como se describe a continuación.</p>
+
+<h5><font color="#27682B"><i class="fas fa-hand-holding-usd"></i> Distribución del Premio <i class="fas fa-hand-holding-usd"></i></font></h5>
+
+<p align="justify">La distribución del premio se realizará de la siguiente manera: </p>
+	<li><b><i class="fas fa-dice-one"></i> Primer Lugar en el ranking: </b>rebaja del 84% del arancel total del programa <b>(valor total del programa: 40 UF)</b></li>
+	<li><b><i class="fas fa-dice-two"></i> Segundo Lugar en el ranking: </b>rebaja del 76% del arancel total del programa <b>(valor total del programa: 60 UF)</b></li>
+	<li><b><i class="fas fa-dice-three"></i> Tercer Lugar en el ranking: </b>rebaja del 68% del arancel total del programa <b>(valor total del programa: 80 UF)</b></li>
+	<li><b><i class="fas fa-dice-four"></i> Cuarto Lugar en el ranking: </b>rebaja del 60% del arancel total del programa <b>(valor total del programa: 100 UF)</b></li>
+
+<br>
+
+<h5><font color="#682F27"><i class="fas fa-exclamation-circle"></i> Requisitos <i class="fas fa-exclamation-circle"></i></font></h5>
+
+<p align="justify"> Los requisitos para obtener esta beca son los siguientes: </p>
+	<li>No superar un año de egreso.</li>
+	<li>Estar aceptado en el programa de magíster.</li>
+	<li>Estar en condiciones de aprobar y cumplir los requisitos para ingresar al magíster dentro de un año a contar de la fecha de matrícula en el programa de magíster. Los requisitos son:<br>
+		<b>El examen de título de pregrado para Ingeniería de Ejecución en Informática</b> y <b>obtención de licenciatura para Ingeniería Civil Informática</b>
+	</li>
+	<li><font color="#682F27"><b><i class="fas fa-exclamation-triangle"></i> No aplica para magíster en Santiago <i class="fas fa-exclamation-triangle"></i></b></font></li>
+
+
+<br>
+<br>
+
+<h5><font color="#1C2852"><i class="fas fa-church"></i> 3. Beca Alumni PUCV <i class="fas fa-church"></font></i></h5>
+<p align="justify">Este beneficio está dirigido a estudiantes de programas de pregrado de la Pontificia Universidad Católica Valparaíso afín al programa de Magíster en Ingeniería Informática. El beneficio consiste en una rebaja del 20% del arancel total del programa.</p>
+
+<h5><font color="#682F27"><i class="fas fa-exclamation-circle"></i> Requisitos <i class="fas fa-exclamation-circle"></i></font></h5>
+
+<li> Estar aceptado en el programa de magíster.</li>
+
+<br>
+<br>
+
+<h3> II. Beneficios Curriculares continuidad de estudios para alumnos ICI</h3>
+<p align="justify">Este beneficio está dirigido a alumnos que se encuentren cursando la carrera de Ingeniería Civil Informática y a su vez el programa de magíster en ingeniería informática.</p>
+
+<h5><font color="#682F27"><i class="fas fa-exclamation-circle"></i> Requisitos <i class="fas fa-exclamation-circle"></i></font></h5>
+
+<li>Cursar simultáneamente asignaturas optativas de magíster y de pregrado.</li>
+<li>Cursar simultáneamente la asignatura del programa de magíster <b>“seminario de tesis”</b> y la asignatura de pregrado <b>“proyecto 1”</b> (para alumnos ingresados hasta el año 2012) y <b> “seminario de título”</b> (para alumnos del plan curricular vigente desde 2013).</li>
+<li>Cursar simultáneamente la asignatura del programa de magíster <b> “proyecto de tesis” </b> y la asignatura de pregrado <b> “proyecto 2”</b> (para alumnos ingresados hasta el año 2012) y <b>“proyecto de título”</b> (para alumnos del plan curricular vigente desde 2013).</li>
+<li>Realizar simultáneamente el examen de grado de magíster y el examen de título de la carrera de Ingeniería Civil Informática.</li>
+<li><i class="far fa-eye"></i><b> * Sujeto a evaluación por parte del comité de magíster</b><i class="far fa-eye"></i></li>
+
+{% endblock %}

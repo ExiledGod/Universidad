@@ -1,0 +1,62 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<!--TÍTULO DE PLANTILLA!-->
+
+<center>
+  <h2>MALLA CURRICULAR ANTIGUA</h2><p align="right"><button class="btn btn-danger"><a href=""><i class="fas fa-cogs"></i></button></a></p><hr>
+</center>
+	<br>
+	<p align="justify">  La nueva malla curricular ha sido pensada y estudiada con la finalidad de otorgar a nuestros estudiantes las mejores herramientas para entregar una educación acorde a las competencias PUCV. <br>La estructura del plan de estudios es flexible, por lo tanto la repartición de asignaturas optativas por semestres es recomendable, pero no obligatoria. Es decir, que el orden para cursar las asignaturas optativas queda a elección, sujeto a la disponibilidad de cursos, y a lo siguiente:</p>
+	<br>
+	
+<!--CUADRO DE TEXTO CON INFORMACIÓN!-->
+
+  <center>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>¡Bienvenido!</strong> En esta sección encontrarás todos los cursos correspondientes a la malla seleccionada. <br> Selecciona algún curso para ver su descripción.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </center>
+
+
+	<h4><font color="#340E10"> <i class="fas fa-exclamation-circle"></i> Las asignaturas obligatorias del programa son: <i class="fas fa-exclamation-circle"></i> </font></h4>
+	{% if object_list %}
+	{% for cursos in object_list %}
+	{% if cursos.curso_en_malla == "Nuevo" %}
+	{% if cursos.tipo == "Obligatorio" %}
+	<li><a href="{% url 'obligatorios_optativos' cursos.pk %}" title="Ir a Información básica de {{ cursos.nombre }}"><b>{{ cursos.sigla }}</b> - {{cursos.nombre}}</a><br></li>
+	{% endif %}
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+
+	<br>
+
+	<h4><font color="#0E3417"><i class="far fa-sticky-note"></i> Las asignaturas optativas del programa son: <i class="far fa-sticky-note"></i> </font></h4>
+	{% if object_list %}
+	{% for cursos in object_list %}
+	{% if cursos.curso_en_malla == "Nuevo" %}
+	{% if cursos.tipo == "Optativo" %}
+	<li><a href="{% url 'obligatorios_optativos' cursos.pk %}"><b>{{ cursos.sigla }}</b> - {{cursos.nombre}}</a><br></li>
+	{% endif %}
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

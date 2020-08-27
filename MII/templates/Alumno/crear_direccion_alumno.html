@@ -1,0 +1,76 @@
+{% extends 'Base/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="form-group">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>
+                <div class="alert alert-success"> {{ message }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row justify-content-md-center">
+            <div class="col-md-8 col-md-offset-2">
+                <legend class="text-center header"><i class="far fa-edit"></i> REGISTRO DIRECCIÓN DE ALUMNO <i class="far fa-edit"></i></legend>
+                <center>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>¡Bienvenido!</strong> En esta sección puedes agregar los datos de dirección del alumno seleccionado al sistema.
+                        Rellena todos los datos y asegúrate de que sean datos válidos.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                </center>
+
+                <div class="form-group">
+                    <label for ="{{ form.alumno.alumno }}">{{form.alumno.label}}</label>
+                    {{form.alumno}}
+                </div>
+            </div>
+
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label for ="{{ form.region.region }}">{{form.region.label}}</label>
+                    {{form.region}}
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label for ="{{ form.provincia.provincia }}">{{form.provincia.label}}</label>
+                    {{form.provincia}}
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label for ="{{ form.comuna.comuna }}">{{form.comuna.label}}</label>
+                    {{form.comuna}}
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label for ="{{ form.direccion.direccion }}">{{form.direccion.label}}</label>
+                    {{form.direccion}}
+                </div>
+            </div>
+        </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <input type="submit" value="Guardar" class="btn btn-primary btn-block">
+                    </div>
+                </div> 
+            </div>
+    </form>
+</div>
+
+
+{% endblock content %}
